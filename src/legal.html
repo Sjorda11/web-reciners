@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESC}}">
+<link rel="canonical" href="{{CANON}}">
+{{ALTS}}
+<meta name="theme-color" content="#0a2617">
+<link rel="icon" href="{{B}}img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="{{B}}fonts/archivo-black.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="{{B}}assets/estil.css">
+</head>
+<body data-page="legal">
+<a class="skip" href="#main" data-es="Saltar al contenido" data-en="Skip to content">Salta al contingut</a>
+
+{{SPRITE}}
+
+<div id="prog"></div>
+<header class="hdr" id="hdr" style="grid-template-columns:1fr auto">
+  <a class="brand" href="./" aria-label="Reciners Informàtica">
+    <svg aria-hidden="true"><use href="#logo"/></svg>
+    <span class="wm">Reciners<small data-es="INFORMÁTICA S.L." data-en="COMPUTER SHOP">INFORMÀTICA S.L.</small></span>
+  </a>
+  <div class="hact">
+    <nav class="lang" aria-label="Idioma">{{LANGSW}}</nav>
+    <a class="btn y mag call" href="tel:+34972576055" aria-label="972 576 055"><svg class="ico"><use href="#i-call"/></svg><span class="num">972 576 055</span></a>
+  </div>
+</header>
+
+{{BODY}}
+
+{{FOOTER}}
+
+<a class="wa-fab" href="{{WA}}" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="brandico" aria-hidden="true"><use href="#b-whatsapp"/></svg><span data-es="Escríbenos por WhatsApp" data-en="Message us on WhatsApp">Escriu-nos per WhatsApp</span></a>
+<script src="{{B}}assets/main.js" defer></script>
+</body>
+</html>

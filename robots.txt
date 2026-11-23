@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /contacte.php
+
+Sitemap: https://reciners.com/sitemap.xml

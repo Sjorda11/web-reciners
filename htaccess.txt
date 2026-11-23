@@ -1,0 +1,46 @@
+# Reciners Informàtica — configuració de seguretat per a Apache
+# Reanomena aquest fitxer a ".htaccess" a l'arrel del web (on hi ha index.html).
+
+Options -Indexes
+DirectoryIndex index.html
+
+# 1. Força HTTPS
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  # Les carpetes i fitxers de treball no s'han de veure des d'internet
+  RewriteRule ^src(/|$) - [F,L]
+  RewriteRule \.(py|md|zip|bak|log)$ - [F,L]
+  RewriteRule ^(LLEGEIX-ME|LEEME|htaccess)\.txt$ - [F,L]
+</IfModule>
+
+# 2. Capçaleres de seguretat
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+  Header unset X-Powered-By
+</IfModule>
+
+# 3. Memòria cau del navegador (més velocitat)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType font/woff "access plus 1 year"
+</IfModule>
+AddType font/woff .woff
+
+# 4. Compressió
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/xml
+</IfModule>

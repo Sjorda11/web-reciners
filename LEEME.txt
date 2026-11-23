@@ -1,0 +1,74 @@
+RECINERS INFORMÀTICA — WEB NUEVA
+==================================
+
+CONTENIDO DE LA CARPETA
+  index.html, legal.html        Web en catalán (idioma principal) y textos legales
+  es/  en/                      Versiones en castellano e inglés (cada una con su legal.html)
+  assets/estil.css              Estilos de todas las páginas
+  assets/main.js                Animaciones, menú, horario en directo y formulario
+  img/  fonts/                  Fotos, mapa, favicon y tipografías (todo en vuestro servidor)
+  contacte.php                  Envío del formulario por correo a admin@reciners.com
+  htaccess.txt                  Seguridad (HTTPS, cabeceras, caché). Renombrar a ".htaccess"
+  robots.txt  sitemap.xml       Para Google
+  src/                          Plantillas para editar (NO hace falta subirla al servidor)
+
+
+CÓMO PUBLICARLA (sustituye al WordPress actual)
+  1. Haz una copia de seguridad completa de la web actual (archivos y base de datos).
+  2. Mueve el WordPress actual a una carpeta aparte o bórralo de la raíz (public_html).
+     Conserva el fichero remot.exe si lo quieres seguir usando.
+  3. Sube a la raíz: index.html, legal.html, es/, en/, assets/, img/, fonts/,
+     contacte.php, robots.txt, sitemap.xml.
+  4. Sube htaccess.txt y renómbralo a ".htaccess".
+  5. Abre https://reciners.com, https://reciners.com/es/ y https://reciners.com/en/
+     y prueba el formulario.
+
+
+COSAS QUE DEBÉIS REVISAR
+  - CORREO DEL FORMULARIO: contacte.php envía desde web@reciners.com a admin@reciners.com.
+    Crea la cuenta web@reciners.com en el hosting (o cambia FROM en contacte.php por una
+    cuenta que exista) para que los mensajes no acaben en spam. El servidor debe tener PHP.
+  - WHATSAPP: el botón abre un chat con el 639 018 299. Confirma que ese número tiene WhatsApp.
+  - DATOS REGISTRALES del aviso legal (tomo 2931, folio 22, hoja GI-55219, inscripción 1.ª,
+    Registro Mercantil de Girona): proceden del BORME de julio de 2013. Comprobadlos con las
+    escrituras.
+  - HOJAS DE RECLAMACIÓN: el aviso legal indica que hay hojas oficiales de queja/reclamación
+    en la tienda, como exige la normativa catalana de consumo. Aseguraos de tenerlas.
+  - DÍAS FESTIVOS: el indicador "Abierto / Cerrado" usa el horario de lunes a viernes
+    (9:30–13:00 y 15:30–20:00, hora de Banyoles). No conoce los festivos.
+  - Si añadís Google Analytics, mapas de Google incrustados, píxeles de Facebook, etc.,
+    tendréis que añadir un banner de consentimiento de cookies y actualizar la política.
+    Ahora mismo NO hace falta: la web no usa cookies ni carga nada de terceros.
+
+
+CÓMO EDITAR TEXTOS
+  Opción rápida: editad directamente index.html (catalán), es/index.html o en/index.html.
+  Opción recomendada: editad src/plantilla.html (cada texto tiene su versión en catalán
+  dentro de la etiqueta y las versiones data-es="..." y data-en="...") y regenerad las tres
+  páginas con:  python3 src/build.py   (necesita Python 3 y Playwright con Chrome).
+  Los textos legales están en src/legal-ca.html, src/legal-es.html y src/legal-en.html.
+  El horario está en src/plantilla.html, src/peu.html y en assets/main.js (SLOTS y OPEN_DAYS).
+
+
+CRÉDITOS Y LICENCIAS
+  - Fotos propias de la tienda: Reciners (fachada, interior, productos de tienda).
+  - Fotos de Unsplash (licencia Unsplash, uso comercial permitido, sin atribución obligatoria):
+      taller.jpg ............ 1721333089073-215a56fd710c
+      s-domicili.jpg ........ 1785682117029-86171f64c826
+      s-racks.jpg ........... 1695668548342-c0c1ad479aee
+      s-fibra.jpg ........... 1604869515882-4d10fa4b0492
+      s-xarxes.jpg .......... 1544197150-b99a580bb7a8
+      s-wifi.jpg ............ 1745847768408-b7b83796cae6
+      s-parabolica.jpg ...... 1736181188872-db061ff70e0e
+      s-antena.jpg .......... 1777103875742-f6a95cd4536e
+      s-manteniment.jpg ..... 1756801370266-f589801cedc3
+      a-particulars.jpg ..... 1648737966326-eb0770cec304
+      a-empreses.jpg ........ 1579389083395-4507e98b5e67
+      a-gaming.jpg .......... 1696710257827-75e2e5954059
+      p-impressores.jpg ..... 1612815154858-60aa4c59eaa6
+      p-carregadors.jpg ..... 1760708825913-65a50b3dc39b
+      p-fundes.jpg .......... 1535157412991-2ef801c1748b
+    (imagen original: https://images.unsplash.com/photo-<id>)
+  - Iconos de Windows, Apple, Android y WhatsApp: Font Awesome Free 7.3.1, licencia CC BY 4.0.
+  - Tipografías: Archivo Black e Inter, licencia SIL Open Font License 1.1 (fonts/OFL-*.txt).
+  - Mapa: © colaboradores de OpenStreetMap (ODbL).
